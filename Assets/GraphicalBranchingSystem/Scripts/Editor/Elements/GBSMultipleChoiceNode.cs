@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GBS.Elements
 {
     using Enumerations;
-    using GBS.Utility;
-    using UnityEditor.Experimental.GraphView;
+    using Utility;
+    using Windows;
     using UnityEngine.UIElements;
 
     public class GBSMultipleChoiceNode : GBSNode
@@ -31,9 +29,9 @@ namespace GBS.Elements
             }
         }
 
-        public override void Init(Vector2 position)
+        public override void Init(GBSGraphView graphView, Vector2 position)
         {
-            base.Init(position);
+            base.Init(graphView, position);
 
             EventType = GBSEventsType.MultipleChoice;
 

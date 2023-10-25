@@ -58,10 +58,14 @@ namespace GBS.Utility
 
         public static TextField CreateTitle(this GBSNode node, string eventName)
         {
-            TextField eventNameTextField = new TextField()
+            TextField eventNameTextField = CreateTextField(eventName, null, callback =>
             {
-                value = eventName
-            };
+                node.GraphView.RemoveUngroupedNode(node);
+
+                node.EventName = callback.newValue;
+
+                node.GraphView.AddUngroupedNode(node);
+            });
 
             eventNameTextField.AddClasses(
                 ".ds-node__text-field",
@@ -72,6 +76,22 @@ namespace GBS.Utility
             node.titleContainer.Insert(0, eventNameTextField);
 
             return eventNameTextField;
+        }
+
+        public static TextField CreateTextField(string value = null, string label = null, EventCallback<ChangeEvent<string>> onValueChanged = null)
+        {
+            TextField textField = new TextField()
+            {
+                value = value,
+                label = label
+            };
+
+            if (onValueChanged != null)
+            {
+                textField.RegisterValueChangedCallback(onValueChanged);
+            }
+
+            return textField;
         }
 
         public static Port CreateInputPort(this GBSNode node, string potName = "", bool addEvent = true)

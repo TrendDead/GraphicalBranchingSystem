@@ -3,7 +3,8 @@ using UnityEngine;
 namespace GBS.Elements
 {
     using Enumerations;
-    using GBS.Utility;
+    using Utility;
+    using Windows;
 
     public class GBSSingleChoiceNode : GBSNode
     {
@@ -17,9 +18,9 @@ namespace GBS.Elements
             RefreshPorts();
         }
 
-        public override void Init(Vector2 position)
+        public override void Init(GBSGraphView graphView, Vector2 position)
         {
-            base.Init(position);
+            base.Init(graphView, position);
 
             EventType = GBSEventsType.SingleChoice;
 

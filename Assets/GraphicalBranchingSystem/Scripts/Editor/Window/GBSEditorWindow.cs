@@ -20,7 +20,7 @@ namespace GBS.Windows
         }
         private void AddGraphView()
         {
-            GBSGraphView graphView = new GBSGraphView();
+            GBSGraphView graphView = new GBSGraphView(this);
 
             graphView.StretchToParentSize();
 
